@@ -1,0 +1,74 @@
+#!/bin/bash
+# Locating config Directory
+config="$(dirname $(readlink -f $BASH_SOURCE))"
+
+#Setting Proxy  ...
+export https_proxy="http://127.0.0.1:3128";
+export http_proxy="http://127.0.0.1:3128";
+export GIT_PROXY_COMMAND=$config/GIT_PROXY
+
+function create()
+{
+  URL=$1 
+  Layer=$2	
+  echo "Downloading from $URL to $Layer"	
+  git clone $URL $Layer	
+}
+
+function update()
+{
+	local Layer=$1
+	local Version=$2
+
+	local Directory=$PWD
+  echo "Updating $Layer"  	
+	cd $Layer
+	git stash --quiet
+	git stash drop --quiet
+	git checkout --quiet $Version
+	git pull --quiet 
+	git clean -df --quiet
+	cd $Directory
+}
+
+function check()
+{
+  local Layer=$1	
+  local URL=$2 
+	local Version=$3
+
+  if [ ! -d $Layer ] ; then
+	create $URL $Layer
+  fi
+	
+	update $Layer $Version
+}
+
+# Store the Top level directory
+BuildRoot=$PWD
+
+# Creating download cache if not exists
+mkdir -p Sources.Cache
+
+# Working in Layers Directory
+mkdir -p Layers
+cd Layers
+LayersRoot=$PWD
+
+# Define output directory
+read build < "$config/Build.Directory.setting"
+
+#Script main
+while read Layer URL Version
+do
+	check $Layer $URL $Version
+done < "$config/Used.Layers.db"
+
+#Copying configuration files to build directory
+cd $BuildRoot
+mkdir -p $build/conf
+while read File
+do
+	cp $config/$File $build/conf/$File
+done < "$config/Config.Files.db"
+

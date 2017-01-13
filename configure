@@ -1,0 +1,15 @@
+#!/bin/bash
+# Locating config Directory
+config="$(dirname $(readlink -f $BASH_SOURCE))"
+
+#Setting Proxy  ...
+export https_proxy="http://127.0.0.1:3128";
+export http_proxy="http://127.0.0.1:3128";
+export GIT_PROXY_COMMAND=$config/GIT_PROXY
+
+####### Specific settings ######## 
+# Define output directory
+read build < "$config/Build.Directory.setting"
+
+#Load build settings ...
+source Layers/poky/oe-init-build-env $build
