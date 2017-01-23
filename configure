@@ -3,8 +3,8 @@
 config="$(dirname $(readlink -f $BASH_SOURCE))"
 
 #Setting Proxy  ...
-export https_proxy="http://127.0.0.1:3128";
-export http_proxy="http://127.0.0.1:3128";
+export https_proxy="http://10.221.15.13:3128";
+export http_proxy="http://10.221.15.13:3128";
 export GIT_PROXY_COMMAND=$config/GIT_PROXY
 
 ####### Specific settings ######## 

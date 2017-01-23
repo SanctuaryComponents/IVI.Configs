@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/connect -H 127.0.0.1:3128 $@
+/usr/bin/connect -H 10.221.15.13:3128 $@
