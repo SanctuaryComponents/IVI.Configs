@@ -1,2 +1,0 @@
-#!/bin/bash
-/usr/bin/connect -H 10.221.15.13:3128 $@
