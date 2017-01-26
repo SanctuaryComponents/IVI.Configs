@@ -7,3 +7,4 @@ For Git Proxying, you need to install connect-proxy package
 
 - Edit content of Build.Directory.setting to the name you want for the full build environnement
 - Edit Used.Layers.db to add/remove/change source location of each layer used in build. 
+- Edit Proxy.Setup to provide proxy settings. 
