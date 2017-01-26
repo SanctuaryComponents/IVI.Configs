@@ -1,5 +1,0 @@
-#Setting Proxy  ...
-export https_proxy="http://127.0.0.1:3128";
-export http_proxy="http://127.0.01:3128";
-export GIT_PROXY_COMMAND='/usr/bin/connect -H 127.0.0.1:3128 $@'
-
