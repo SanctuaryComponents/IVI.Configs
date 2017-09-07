@@ -7,15 +7,17 @@ PORT=3128
 # Use credentials as login:password@ 
 AUTH=
 
+
 # No need to edit beyond that point
 export http_proxy="http://${AUTH}${PROXY}:${PORT}"
 export https_proxy="http://${AUTH}${PROXY}:${PORT}"
 export GIT_PROXY_COMMAND=$config/Proxy.GIT
 
 #Generate GIT command line... (based on connect-proxy package)
+URL='$@'
 cat << EOF > $config/Proxy.GIT
 #!/bin/bash
-/usr/bin/connect -H ${PROXY}:${PORT} $@
+/usr/bin/connect -H ${PROXY}:${PORT} $URL
 EOF
 
 chmod +x $config/Proxy.GIT

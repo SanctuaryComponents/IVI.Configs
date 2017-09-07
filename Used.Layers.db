@@ -1,5 +1,6 @@
 poky git://git.yoctoproject.org/poky jethro
 meta-openembedded git://git.openembedded.org/meta-openembedded jethro
+meta-qt5 git://github.com/meta-qt5/meta-qt5.git jethro
 meta-fsl-arm git://git.yoctoproject.org/meta-fsl-arm jethro
 meta-ivi http://git.yoctoproject.org/git/meta-ivi 10.0
 meta-nodejs git://github.com/imyller/meta-nodejs.git master
