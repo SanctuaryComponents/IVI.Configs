@@ -1,10 +1,4 @@
 #!/bin/bash
-# Locating config Directory
-config="$(dirname $(readlink -f $BASH_SOURCE))"
-
-#Setting Proxy  ...
-source $config/Proxy.Setup
-
 function create()
 {
   URL=$1 
@@ -41,6 +35,13 @@ function check()
 	
 	update $Layer $Version
 }
+
+# Locating config Directory
+config="$(dirname $(readlink -f $BASH_SOURCE))"
+
+#Setting from HTTP Proxy from comand line args
+proxy = $1
+source $config/Proxy.Setup 
 
 # Store the Top level directory
 BuildRoot=$PWD
