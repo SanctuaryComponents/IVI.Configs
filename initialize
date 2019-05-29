@@ -40,7 +40,6 @@ function check()
 config="$(dirname $(readlink -f $BASH_SOURCE))"
 
 #Setting from HTTP Proxy from comand line args
-proxy = $1
 source $config/Proxy.Setup 
 
 # Store the Top level directory
