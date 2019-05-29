@@ -4,4 +4,4 @@ meta-qt5 git://github.com/meta-qt5/meta-qt5.git krogoth
 meta-fsl-arm git://git.yoctoproject.org/meta-fsl-arm jethro
 meta-ivi http://git.yoctoproject.org/git/meta-ivi 10.0
 meta-nodejs git://github.com/imyller/meta-nodejs.git master
-meta-ivi-custom git@zircon.tcr.renault.fr:Layers/meta-ivi-custom master
+meta-ivi-custom git://github.com/SanctuaryComponents/meta-ivi-custom.git master
