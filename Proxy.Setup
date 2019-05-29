@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # No need to edit beyond that point
-export http_proxy="${proxy}"
-export https_proxy="${proxy}"
+export http_proxy="http://${PROXY_ADDRESS}:${PROXY_PORT}"
+export https_proxy="http://${PROXY_ADDRESS}:${PROXY_PORT}"
 export GIT_PROXY_COMMAND=$config/Proxy.GIT
 
 #Generate GIT command line... (based on connect-proxy package)
 URL='$@'
 cat << EOF > $config/Proxy.GIT
 #!/bin/bash
-/usr/bin/connect -H ${proxy} $URL
+/usr/bin/connect -H ${PROXY_ADDRESS}:${PROXY_PORT} $URL
 EOF
 
 chmod +x $config/Proxy.GIT
